@@ -64,6 +64,31 @@ body::after {
   pointer-events: none;
 }
 
+/* GenZ Minimalist Noise Overlay */
+.noise-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Outline Text */
+.text-outline {
+  color: transparent;
+  -webkit-text-stroke: 1px var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+.text-outline:hover {
+  color: var(--text-primary);
+  -webkit-text-stroke: 1px transparent;
+}
+
 a {
   color: var(--text-primary);
   text-decoration: none;

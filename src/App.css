@@ -77,6 +77,62 @@
   max-width: 600px;
 }
 
+/* Marquee Effect */
+.marquee-container {
+  width: 100vw;
+  overflow: hidden;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  padding: 1.5rem 0;
+  background: var(--text-primary);
+  color: var(--bg-color);
+  transform: rotate(-2deg) scale(1.05);
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  display: flex;
+  z-index: 10;
+}
+
+.marquee-content {
+  display: flex;
+  white-space: nowrap;
+  animation: marquee 20s linear infinite;
+  gap: 3rem;
+}
+
+.marquee-item {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Floating Sticker Badge */
+.sticker {
+  position: absolute;
+  top: 15%;
+  right: 15%;
+  width: 120px;
+  height: 120px;
+  background: transparent;
+  animation: spinSlow 15s linear infinite;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 /* Resume Grid */
 .resume-section {
   display: grid;
@@ -207,6 +263,27 @@
   width: 100%;
   height: 100%;
   border: 0;
+}
+
+/* Creative Divider */
+.creative-divider {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin: 4rem 0;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border-color), transparent);
+}
+
+.divider-text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  letter-spacing: 4px;
 }
 
 /* Graphic Design Grid */

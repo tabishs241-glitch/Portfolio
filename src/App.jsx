@@ -10,6 +10,11 @@ const fadeInUp = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } }
 };
 
+const scaleIn = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
+};
+
 const staggerContainer = {
   hidden: { opacity: 0 },
   visible: {
@@ -17,6 +22,36 @@ const staggerContainer = {
     transition: { staggerChildren: 0.1 }
   }
 };
+
+const staggerGrid = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.15 }
+  }
+};
+
+// Animated video card with hover effects
+const VideoCard = ({ src }) => (
+  <motion.div 
+    className="video-card"
+    variants={scaleIn}
+    whileHover={{ y: -10, transition: { duration: 0.3 } }}
+  >
+    <div className="video-container">
+      <iframe src={src} allowFullScreen></iframe>
+    </div>
+  </motion.div>
+);
+
+// Creative section divider
+const Divider = ({ text }) => (
+  <div className="creative-divider">
+    <span className="divider-line"></span>
+    <span className="divider-text">{text}</span>
+    <span className="divider-line"></span>
+  </div>
+);
 
 // Reusable animated section component
 const AnimatedSection = ({ children, className, id }) => {
@@ -39,6 +74,14 @@ const Home = () => {
     <>
       {/* Hero Section */}
       <section id="home" className="hero">
+        {/* Floating Sticker */}
+        <svg className="sticker" viewBox="0 0 120 120">
+          <path id="circlePath" d="M 60, 60 m -50, 0 a 50,50 0 1,1 100,0 a 50,50 0 1,1 -100,0" fill="none"/>
+          <text fontSize="10" fontFamily="Outfit" fontWeight="700" fill="#f8f8f8" letterSpacing="4">
+            <textPath href="#circlePath">CREATIVE ✦ MARKETING ✦ DESIGN ✦ VIDEO ✦ </textPath>
+          </text>
+        </svg>
+
         <div className="container">
           <motion.div 
             className="hero-content"
@@ -46,8 +89,10 @@ const Home = () => {
             animate="visible"
             variants={staggerContainer}
           >
-            <motion.div variants={fadeInUp} className="badge">Digital & Creative Marketing</motion.div>
-            <motion.h1 variants={fadeInUp}>Tabish Shahid.<br/>Portfolio.</motion.h1>
+            <motion.div variants={fadeInUp} className="badge">✦ Digital & Creative Marketing</motion.div>
+            <motion.h1 variants={fadeInUp}>
+              Tabish Shahid.<br/><span className="text-outline">Portfolio.</span>
+            </motion.h1>
             <motion.p variants={fadeInUp} className="hero-desc">
               Crafting elevated digital experiences, high-retention video content, and aesthetic marketing masterpieces for modern brands.
             </motion.p>
@@ -61,6 +106,24 @@ const Home = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Marquee Banner */}
+      <div className="marquee-container">
+        <div className="marquee-content">
+          <span className="marquee-item">✦ Video Editing</span>
+          <span className="marquee-item">✦ Graphic Design</span>
+          <span className="marquee-item">✦ Social Media</span>
+          <span className="marquee-item">✦ Ads & Marketing</span>
+          <span className="marquee-item">✦ Brand Strategy</span>
+          <span className="marquee-item">✦ Content Creation</span>
+          <span className="marquee-item">✦ Video Editing</span>
+          <span className="marquee-item">✦ Graphic Design</span>
+          <span className="marquee-item">✦ Social Media</span>
+          <span className="marquee-item">✦ Ads & Marketing</span>
+          <span className="marquee-item">✦ Brand Strategy</span>
+          <span className="marquee-item">✦ Content Creation</span>
+        </div>
+      </div>
 
       {/* Experience & Education */}
       <AnimatedSection id="experience">
@@ -147,37 +210,47 @@ const Home = () => {
 
           <div style={{ marginBottom: '6rem' }}>
             <h3 style={{ marginBottom: '2rem' }}>Skin Haven</h3>
-            <div className="video-grid">
-              <div className="video-card"><div className="video-container"><iframe src="https://www.youtube.com/embed/aXLweklod1E" allowFullScreen></iframe></div></div>
-              <div className="video-card"><div className="video-container"><iframe src="https://www.youtube.com/embed/KLo-BMtBLRA" allowFullScreen></iframe></div></div>
-              <div className="video-card"><div className="video-container"><iframe src="https://www.youtube.com/embed/53XjYB36IaM" allowFullScreen></iframe></div></div>
-              <div className="video-card"><div className="video-container"><iframe src="https://www.youtube.com/embed/G4H1zQE6APE" allowFullScreen></iframe></div></div>
-            </div>
+            <motion.div className="video-grid" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerGrid}>
+              <VideoCard src="https://www.youtube.com/embed/aXLweklod1E" />
+              <VideoCard src="https://www.youtube.com/embed/KLo-BMtBLRA" />
+              <VideoCard src="https://www.youtube.com/embed/53XjYB36IaM" />
+              <VideoCard src="https://www.youtube.com/embed/G4H1zQE6APE" />
+              <VideoCard src="https://www.youtube.com/embed/xrsCSg7lf50" />
+              <VideoCard src="https://www.youtube.com/embed/-0TGhmGT2zs" />
+            </motion.div>
           </div>
+
+          <Divider text="✦" />
 
           <div style={{ marginBottom: '6rem' }}>
             <h3 style={{ marginBottom: '2rem' }}>Artisan</h3>
-            <div className="video-grid">
-              <div className="video-card"><div className="video-container"><iframe src="https://www.youtube.com/embed/GitcncN0KU0" allowFullScreen></iframe></div></div>
-              <div className="video-card"><div className="video-container"><iframe src="https://www.youtube.com/embed/3DD7gYFGQio" allowFullScreen></iframe></div></div>
-            </div>
+            <motion.div className="video-grid" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerGrid}>
+              <VideoCard src="https://www.youtube.com/embed/-ITOLUl-8bg" />
+              <VideoCard src="https://www.youtube.com/embed/sATjgUd-irM" />
+              <VideoCard src="https://www.youtube.com/embed/EjWltiHlKKM" />
+            </motion.div>
           </div>
+
+          <Divider text="✦" />
 
           <div style={{ marginBottom: '6rem' }}>
             <h3 style={{ marginBottom: '2rem' }}>QRG</h3>
-            <div className="video-grid">
-              <div className="video-card"><div className="video-container"><iframe src="https://www.youtube.com/embed/bYqF4wtnR6A" allowFullScreen></iframe></div></div>
-              <div className="video-card"><div className="video-container"><iframe src="https://www.youtube.com/embed/tb1IXKcjbgU" allowFullScreen></iframe></div></div>
-            </div>
+            <motion.div className="video-grid" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerGrid}>
+              <VideoCard src="https://www.youtube.com/embed/c03r_J1KyNI" />
+              <VideoCard src="https://www.youtube.com/embed/cj252cb89MM" />
+              <VideoCard src="https://www.youtube.com/embed/WmLap3silEU" />
+            </motion.div>
           </div>
 
+          <Divider text="✦" />
+
           <div>
-            <h3 style={{ marginBottom: '2rem' }}>Mixed Clients (Beautiful, Joy Story, Irum Khan)</h3>
-            <div className="video-grid">
-              <div className="video-card"><div className="video-container"><iframe src="https://www.youtube.com/embed/DXrcS2_Jntc" allowFullScreen></iframe></div></div>
-              <div className="video-card"><div className="video-container"><iframe src="https://www.instagram.com/reel/C5gUggjokl7/embed" allowFullScreen></iframe></div></div>
-              <div className="video-card"><div className="video-container"><iframe src="https://www.youtube.com/embed/glUD3Qp5ooM" allowFullScreen></iframe></div></div>
-            </div>
+            <h3 style={{ marginBottom: '2rem' }}>Some of my other work</h3>
+            <motion.div className="video-grid" initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerGrid}>
+              <VideoCard src="https://www.youtube.com/embed/DXrcS2_Jntc" />
+              <VideoCard src="https://drive.google.com/file/d/19ampIJ7pJyxmbmE1INR9Uhup-ueBFkPp/preview" />
+              <VideoCard src="https://www.youtube.com/embed/glUD3Qp5ooM" />
+            </motion.div>
           </div>
         </div>
       </AnimatedSection>
@@ -283,6 +356,7 @@ function App() {
   return (
     <Router>
       <div className="app-container">
+        <div className="noise-overlay"></div>
         <nav className="navbar">
           <div className="container nav-content">
             <Link to="/" className="nav-logo">Tabish.</Link>
