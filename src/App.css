@@ -169,20 +169,23 @@
   border-bottom-color: var(--text-primary);
 }
 
-/* New UI-friendly Video Grid */
+/* New UI-friendly Video Grid - Phone Size */
 .video-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2.5rem;
 }
 
 .video-card {
   width: 100%;
-  border-radius: 20px;
+  max-width: 320px; /* Restricts width so height is around 550-600px (phone size) */
+  border-radius: 24px;
   overflow: hidden;
   background: var(--surface-color);
-  border: 1px solid var(--border-color);
+  border: 4px solid var(--border-color); /* Thicker border to simulate phone bezel */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex: 1 1 280px;
 }
 
 .video-card:hover {

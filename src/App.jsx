@@ -157,7 +157,7 @@ const Home = () => {
 
           <div style={{ marginBottom: '6rem' }}>
             <h3 style={{ marginBottom: '2rem' }}>Artisan</h3>
-            <div className="video-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))' }}>
+            <div className="video-grid">
               <div className="video-card"><div className="video-container"><iframe src="https://www.youtube.com/embed/GitcncN0KU0" allowFullScreen></iframe></div></div>
               <div className="video-card"><div className="video-container"><iframe src="https://www.youtube.com/embed/3DD7gYFGQio" allowFullScreen></iframe></div></div>
             </div>
@@ -165,7 +165,7 @@ const Home = () => {
 
           <div style={{ marginBottom: '6rem' }}>
             <h3 style={{ marginBottom: '2rem' }}>QRG</h3>
-            <div className="video-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))' }}>
+            <div className="video-grid">
               <div className="video-card"><div className="video-container"><iframe src="https://www.youtube.com/embed/bYqF4wtnR6A" allowFullScreen></iframe></div></div>
               <div className="video-card"><div className="video-container"><iframe src="https://www.youtube.com/embed/tb1IXKcjbgU" allowFullScreen></iframe></div></div>
             </div>
@@ -173,7 +173,7 @@ const Home = () => {
 
           <div>
             <h3 style={{ marginBottom: '2rem' }}>Mixed Clients (Beautiful, Joy Story, Irum Khan)</h3>
-            <div className="video-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
+            <div className="video-grid">
               <div className="video-card"><div className="video-container"><iframe src="https://www.youtube.com/embed/DXrcS2_Jntc" allowFullScreen></iframe></div></div>
               <div className="video-card"><div className="video-container"><iframe src="https://www.instagram.com/reel/C5gUggjokl7/embed" allowFullScreen></iframe></div></div>
               <div className="video-card"><div className="video-container"><iframe src="https://www.youtube.com/embed/glUD3Qp5ooM" allowFullScreen></iframe></div></div>
